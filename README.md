@@ -10,7 +10,7 @@ Students are expected to:
 Student Info
 =======================
 
-* Name: *YourNameHere*
-* ID: *YourIdHere*
-* Group ID: *Your Group ID here*
-* Project Name: *Your Project Name here*
+* Name: Đặng Vĩnh Bảo
+* ID: USTHBI6-017
+* Group ID: 3
+* Project Name: Facebook
