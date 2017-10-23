@@ -10,7 +10,7 @@ Students are expected to:
 Student Info
 =======================
 
-* Name: Đặng Vĩnh Bảo
-* ID: USTHBI6-017
+* Name: Đặng Vĩnh Bảo, Tạ Nguyên Long, Nguyễn Trọng Nhân
+* ID: USTHBI6-017, USTHBI5-080, USTHBI4-115
 * Group ID: 3
 * Project Name: Facebook
