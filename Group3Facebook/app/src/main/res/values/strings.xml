@@ -23,8 +23,11 @@
     <string name="sampleDate">29/10/2017</string>
     <string name="sampleTime">4:00PM</string>
 
+
     <string name="postTextSample">This is a sample post text!\n
         Sunset is the time of day when our sky meets the outer space solar winds.
         There are blue, pink, and purple swirls, spinning and twisting, like clouds of balloons caught in a blender.
         </string>
+    <string name="commentSample">This is a sample comment!\nRandom text Random text Random text Random text
+        Random text Random text Random text</string>
 </resources>
