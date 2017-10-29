@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/postPad"
+    android:layout_marginTop="@dimen/postMargin"
+
+    android:background="@color/white"
+    tools:context="group3facebook.usth.edu.vn.group3facebook.PostFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--Creator info-->
+    <LinearLayout
+        android:id="@+id/creatorInfo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/creatorInfoHeight"
+        android:orientation="horizontal"
+        android:padding="@dimen/creatorInfoPad"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="@dimen/creatorIconSize"
+            android:layout_height="@dimen/creatorIconSize"
+            android:src="@drawable/user_icon"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/creatorNamePadL"
+            android:text="@string/creatorNameSam"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/creatorNamePadL"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/sampleDate"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/sampleTime"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:id="@+id/border"
+        android:layout_width="350dp"
+        android:layout_height="3dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="20dp"
+        android:layout_alignBottom="@+id/creatorInfo"></View>
+    <!--End creator info-->
+
+    <!--News Fragment Using code to post it on-->
+    <LinearLayout
+        android:id="@+id/News"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/TextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/postTextSample"/>
+        <!-- End Text View-->
+
+        <!-- Image View -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imageMaxH"
+            android:src="@drawable/sample_image"
+            android:layout_below="@+id/TextField"
+            android:background="@color/newsFeedBG"/>
+    </LinearLayout>
+
+
+    <!--Like/comment button-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/News"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="Like"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="@dimen/buttonHeight"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="Comment"/>
+    </LinearLayout>
+
+</LinearLayout>

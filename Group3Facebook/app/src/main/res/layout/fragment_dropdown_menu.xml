@@ -1,0 +1,199 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="group3facebook.usth.edu.vn.group3facebook.DropdownMenu">
+
+    <!-- background color of button might be change to enable animation button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="13dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_icon"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_name"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_profile"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- begin favorites section -->
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="20dp"
+            android:layout_margin="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorites_title_menu"
+            android:layout_marginLeft="5dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawableLeft="@drawable/icons8_instagram"
+                android:text="@string/instagran"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:background="@color/white"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"
+                />
+            <Button
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawableLeft="@drawable/icons8_message"
+                android:text="@string/messenger"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                />
+
+            <Button
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawableLeft="@drawable/icons8_calendar"
+                android:text="@string/event"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                />
+
+            <Button
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:drawableLeft="@drawable/icons8_marker"
+                android:text="@string/location"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                />
+
+        <!--begin group section -->
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="20dp"
+            android:layout_margin="8dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/group_title_menu"
+            android:layout_marginLeft="5dp"/>
+
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/icons8_group"
+            android:text="Group 1"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            />
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/icons8_group"
+            android:text="Group 2"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            />
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/icons8_group"
+            android:text="Group 3"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            />
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/icons8_group"
+            android:text="Group 4"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all_expansion"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            />
+
+        <!-- begin help and settings section -->
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="20dp"
+            android:layout_margin="8dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/helpsettings_title_menu"
+            android:layout_marginLeft="5dp"/>
+
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/icons8_signout"
+            android:text="@string/logout_user"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="10dp"
+            android:background="@color/white"
+            android:layout_marginTop="5dp"
+            />
+
+    </LinearLayout>
+</ScrollView>

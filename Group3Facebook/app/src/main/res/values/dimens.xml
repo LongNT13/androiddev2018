@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="buttonHeight">40dp</dimen>
+    <!--News Feed-->
+    <dimen name="newsFeedMargin">10dp</dimen>
+    <dimen name="postMargin">10dp</dimen>
+
+    <!--Posts Fragment-->
+    <dimen name="postPad">10dp</dimen>
+
+    <dimen name="creatorInfoHeight">50dp</dimen>
+    <dimen name="creatorInfoPad">5dp</dimen>
+    <dimen name="creatorIconSize">40dp</dimen>
+    <dimen name="creatorNamePadL">5dp</dimen>
+
+    <dimen name="imageMaxH">250dp</dimen>
+</resources>
