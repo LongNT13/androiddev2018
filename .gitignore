@@ -1,9 +1,9 @@
 *.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
-.externalNativeBuild
+Group3Facebook/.gradle
+Group3Facebook/local.properties
+Group3Facebook/.idea/workspace.xml
+Group3Facebook/.idea/libraries
+Group3Facebook/.DS_Store
+Group3Facebook/build
+Group3Facebook/captures
+Group3Facebook/.externalNativeBuild
