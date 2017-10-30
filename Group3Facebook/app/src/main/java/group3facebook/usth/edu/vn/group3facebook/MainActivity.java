@@ -1,5 +1,6 @@
 package group3facebook.usth.edu.vn.group3facebook;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +9,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,14 +22,21 @@ public class MainActivity extends AppCompatActivity {
 
         PagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
 
-        ViewPager pager = (ViewPager)findViewById(R.id.pager);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setOffscreenPageLimit(2);
         pager.setAdapter(adapter);
 
-        TabLayout mainTab = (TabLayout)findViewById(R.id.tab);
+        TabLayout mainTab = (TabLayout) findViewById(R.id.tab);
         mainTab.setupWithViewPager(pager);
-    }
 
+        Button logoutButton = (Button) findViewById(R.id.buttonLogout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
+    }
 
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 2;
