@@ -40,17 +40,16 @@ public class CommentListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    /*
-        //Return btn
-        Button btnPost = (Button)getView().findViewById(R.id.btnPost);
 
-        btnPost.setOnClickListener(new View.OnClickListener() {
+        //Return btn
+        Button btnReturn = (Button)getView().findViewById(R.id.btnReturn);
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //exitCommentList();
+                exitCommentList();
             }
         });
-       */
     }
 
     public void AddNewComment(Fragment fragment){
