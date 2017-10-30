@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -23,15 +24,29 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AddNewPost(new PostFragment());
-        AddNewPost(new PostFragment());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news_feed, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //Post btn
+        Button btnPost = (Button)getView().findViewById(R.id.btnPost);
+
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddNewPost(new PostFragment());
+            }
+        });
     }
 
     public void AddNewPost(Fragment fragment){
@@ -40,5 +55,7 @@ public class NewsFeedFragment extends Fragment {
         fragmentTransaction.add(R.id.PostsList, fragment, null);
         fragmentTransaction.commit();
     }
+
+
 
 }
