@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -17,7 +18,6 @@ public class CommentFragment extends Fragment {
     public CommentFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

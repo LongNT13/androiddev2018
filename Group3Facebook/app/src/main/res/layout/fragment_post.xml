@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/postMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -97,6 +98,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:text="Like"/>
         <Button
+            android:id="@+id/btnComment"
             android:layout_width="0dp"
             android:layout_height="@dimen/buttonHeight"
             android:layout_weight="1"
