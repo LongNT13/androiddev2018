@@ -11,18 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
 
-        PagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
+        PagerAdapter adapter = new ProfileActivity.HomeFragmentPagerAdapter(getSupportFragmentManager());
 
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setOffscreenPageLimit(2);
@@ -35,19 +32,19 @@ public class MainActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
             }
         });
     }
 
-    public void ProfileMenu(View view){
-        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+    public void ProfileToMain(View view){
+        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 2;
-        private String titles[] = {"News Feeds", "Menu"};
+        private String titles[] = {"About", "Others"};
 
         public HomeFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -61,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position){
-                case 0: return new NewsFeedFragment();
-                case 1: return new DropdownMenu();
+                case 0: return new AboutFragment();
             }
             return new Fragment();
         }
