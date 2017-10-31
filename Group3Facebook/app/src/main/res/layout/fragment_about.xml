@@ -79,10 +79,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/gladiator_friend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/icons8_knight_helmet_filled"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gladiator"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/gladiator_friend"
+                    android:textStyle="bold"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,10 +118,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/gladiator_friend2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/icons8_knight_helmet_filled"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gladiator"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/gladiator_friend2"
+                    android:textStyle="bold"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,10 +155,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/gladiator_friend3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/icons8_knight_helmet_filled"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gladiator"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/gladiator_friend3"
+                    android:textStyle="bold"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,10 +192,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/gladiator_friend4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/icons8_knight_helmet_filled"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gladiator"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/gladiator_friend4"
+                    android:textStyle="bold"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
