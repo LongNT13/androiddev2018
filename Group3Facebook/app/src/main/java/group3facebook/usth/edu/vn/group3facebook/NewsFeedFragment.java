@@ -24,6 +24,8 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AddNewPost(new PostFragment());
+        AddNewPost(new PostFragment());
     }
 
     @Override
