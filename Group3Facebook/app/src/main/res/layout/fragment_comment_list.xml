@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp"
-    android:background="@color/newsFeedBG"
+    android:background="@color/BGLightDark"
     tools:context="group3facebook.usth.edu.vn.group3facebook.CommentListFragment">
 
     <!-- TODO: Update blank fragment layout -->

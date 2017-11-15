@@ -9,6 +9,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -31,19 +34,33 @@ public class MainActivity extends AppCompatActivity {
         TabLayout mainTab = (TabLayout) findViewById(R.id.tab);
         mainTab.setupWithViewPager(pager);
 
-        Button logoutButton = (Button) findViewById(R.id.buttonLogout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            }
-        });
+        //toolbar
+        Toolbar tb = (Toolbar)findViewById(R.id.ToolbarMain);
+        setSupportActionBar(tb);
     }
 
     public void ProfileMenu(View view){
         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
+    //Toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_toolbar_menu, menu);
+        return true ;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.btnLogOut:
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    //End Toolbar
 
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 2;

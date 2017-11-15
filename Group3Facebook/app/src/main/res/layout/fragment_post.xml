@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/postPad"
+    android:paddingTop="@dimen/postPad"
+    android:paddingLeft="@dimen/postPad"
+    android:paddingRight="@dimen/postPad"
     android:layout_marginTop="@dimen/postMargin"
 
     android:background="@color/white"
@@ -29,7 +31,8 @@
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/creatorNamePadL"
-            android:text="@string/creatorNameSam"/>
+            android:text="@string/creatorNameSam"
+            android:textColor="@color/textBold"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -80,7 +83,7 @@
             android:layout_height="@dimen/imageMaxH"
             android:src="@drawable/sample_image"
             android:layout_below="@+id/TextField"
-            android:background="@color/newsFeedBG"/>
+            android:background="@color/BGLightDark"/>
     </LinearLayout>
 
 
@@ -95,15 +98,21 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/buttonHeight"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="Like"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Like"
+            android:textColor="@color/textDark"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/buttonHeight"
+            android:background="@color/BGLightDark"/>
         <Button
             android:id="@+id/btnComment"
             android:layout_width="0dp"
             android:layout_height="@dimen/buttonHeight"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="Comment"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Comment"
+            android:textColor="@color/textDark"/>
     </LinearLayout>
 
 </LinearLayout>

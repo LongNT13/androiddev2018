@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/newsFeedBG"
+    android:background="@color/BGLightDark"
     android:orientation="vertical"
     android:padding="@dimen/newsFeedMargin"
     tools:context="group3facebook.usth.edu.vn.group3facebook.NewsFeedFragment">
@@ -38,34 +38,41 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:src="@drawable/user_icon"/>
+                    <!--buttons-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/BGLightDark"
+                        android:layout_below="@id/user_icon"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/buttonHeight"
                         android:orientation="horizontal"
-                        android:background="@color/buttonColor"
                         android:layout_below="@id/user_icon">
 
                         <Button
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Image"
-                            android:textSize="8dp" />
+                            android:textSize="8dp"
+                            android:textColor="@color/textDark"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="@color/white"
+                            android:background="@color/BGLightDark"
                             />
 
                         <Button
                             android:id="@+id/btnPost"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="Post"
-                            android:textSize="8dp" />
+                            android:textSize="8dp"
+                            android:textColor="@color/textDark"/>
                     </LinearLayout>
                 </RelativeLayout>
                 <!--End Make Post box-->
