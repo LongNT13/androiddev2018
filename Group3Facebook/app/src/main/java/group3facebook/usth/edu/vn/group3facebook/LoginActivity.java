@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             initVariables();
 
             //get permission
-            loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_posts"));
+            loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_posts", "user_photos"));
             setLogin_Button();
         }
     }

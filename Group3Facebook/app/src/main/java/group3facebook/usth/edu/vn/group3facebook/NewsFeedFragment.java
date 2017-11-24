@@ -54,16 +54,9 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_news_feed, container, false);
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news_feed, container, false);
-    }
-
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setUpButtons();
+        setUpButtons(view);
 
         shareDialog = new ShareDialog(NewsFeedFragment.this);
 
@@ -71,15 +64,17 @@ public class NewsFeedFragment extends Fragment {
                 , new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.d("JSON", object.toString());
+                        Log.d("JSON", response.getJSONObject().toString());
                     }
                 });
         Bundle param = new Bundle();
         param.putString("fields","feed");
+        param.putString("limit","10");
         graphRequest.setParameters(param);
         graphRequest.executeAsync();
+        // Inflate the layout for this fragment
+        return view;
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -98,10 +93,10 @@ public class NewsFeedFragment extends Fragment {
     }
 
 
-    private void setUpButtons() {
+    private void setUpButtons(View v) {
         //Post btn
-        btnPost = (Button)getView().findViewById(R.id.btnPost);
-        btnPostImg = (Button)getView().findViewById(R.id.btnPostImg);
+        btnPost = (Button)v.findViewById(R.id.btnPost);
+        btnPostImg = (Button)v.findViewById(R.id.btnPostImg);
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
