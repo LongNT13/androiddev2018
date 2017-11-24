@@ -2,11 +2,13 @@ package group3facebook.usth.edu.vn.group3facebook;
 
 
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -40,13 +42,20 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
 
-        initVariables();
+        if(isLoggedIn()){
+            loginSuccess();
 
-        //get permission
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
-        setLogin_Button();
+        }else {
+
+            callbackManager = CallbackManager.Factory.create();
+
+            initVariables();
+
+            //get permission
+            loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_posts"));
+            setLogin_Button();
+        }
     }
 
     @Override
@@ -84,6 +93,10 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSuccess() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public boolean isLoggedIn() {
+        return AccessToken.getCurrentAccessToken() != null;
     }
 }
 

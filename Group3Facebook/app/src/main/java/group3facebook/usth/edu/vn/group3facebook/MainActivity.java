@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.login.LoginManager;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,12 +55,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.btnLogOut:
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                logoutAction();
+
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void logoutAction() {
+        LoginManager.getInstance().logOut();
+        startActivity(new Intent(MainActivity.this,LoginActivity.class));
     }
     //End Toolbar
 
