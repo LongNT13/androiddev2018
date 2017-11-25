@@ -43,13 +43,14 @@
             <!--End Make Post box-->
 
         </LinearLayout>
-        <ImageView
-            android:id="@+id/testImg"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@+id/postButtons"/>
-        <!--Posts List-->
 
+        <!--Posts List-->
+        <ListView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
         <!--End Posts List-->
 
         <!--Comment view-->

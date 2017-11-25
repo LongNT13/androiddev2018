@@ -9,23 +9,22 @@
     android:paddingRight="@dimen/postPad"
     android:layout_marginTop="@dimen/postMargin"
 
-    android:background="@color/white"
-    tools:context="group3facebook.usth.edu.vn.group3facebook.PostFragment">
+    android:background="@color/BGLight">
 
     <!-- TODO: Update blank fragment layout -->
     <!--Creator info-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/postPad"
+        android:background="@color/BGLightDark"/>
     <LinearLayout
         android:id="@+id/creatorInfo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/creatorInfoHeight"
         android:orientation="horizontal"
-        android:padding="@dimen/creatorInfoPad"
-        android:layout_alignParentTop="true">
-        <ImageView
-            android:layout_width="@dimen/creatorIconSize"
-            android:layout_height="@dimen/creatorIconSize"
-            android:src="@drawable/user_icon"/>
+        android:padding="@dimen/creatorInfoPad">
         <TextView
+            android:id="@+id/creatorName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -42,11 +41,13 @@
             android:paddingLeft="@dimen/creatorNamePadL"
             >
             <TextView
+                android:id="@+id/createDate"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/sampleDate"/>
             <TextView
+                android:id="@+id/createTime"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -70,15 +71,16 @@
         android:orientation="vertical"
         >
         <TextView
-            android:id="@+id/TextField"
+            android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:padding="@dimen/postPad"
             android:text="@string/postTextSample"/>
         <!-- End Text View-->
 
         <!-- Image View -->
         <ImageView
+            android:id="@+id/picture"
             android:layout_width="match_parent"
             android:layout_height="@dimen/imageMaxH"
             android:src="@drawable/sample_image"
@@ -86,9 +88,13 @@
             android:background="@color/BGLightDark"/>
     </LinearLayout>
 
-
     <!--Like/comment button-->
-    <LinearLayout
+
+
+</LinearLayout>
+
+<!--
+<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -114,5 +120,4 @@
             android:text="Comment"
             android:textColor="@color/textDark"/>
     </LinearLayout>
-
-</LinearLayout>
+-->
