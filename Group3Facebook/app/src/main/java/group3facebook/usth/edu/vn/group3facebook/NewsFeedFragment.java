@@ -160,17 +160,6 @@ public class NewsFeedFragment extends Fragment {
 
         ArrayList<PostItem> postListItems = new ArrayList<PostItem>();
 
-        //test 1
-        try {
-            //Log.d("JSON", object.toString());
-            //Log.i("JSON", object.getJSONObject("feed").getJSONArray("data").getJSONObject(0).getJSONObject("from").getString("name"));
-            String name = object.getJSONObject("feed").getJSONArray("data").getJSONObject(0).getJSONObject("from").getString("name");
-            PostItem p = new PostItem(name, "", "", "");
-            postListItems.add(p);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
         //there are 10
         for(int i = 0; i < 10; i++){
             try {
@@ -182,8 +171,25 @@ public class NewsFeedFragment extends Fragment {
                         .getJSONObject("from")
                         .getString("name");
 
-                String message = currentPost.getString("message");
-                PostItem p = new PostItem(name, "", message, "");
+                String createDateTime = currentPost.getString("created_time");
+
+                //check if there is a message
+                String message;
+                if(currentPost.has("message")) {
+                    message = currentPost.getString("message");
+                }else {
+                    message = "";
+                }
+                //check if there is a picture
+                String pictureURL;
+                if(currentPost.has("full_picture")){
+                    pictureURL = currentPost.getString("full_picture");
+                }else {
+                    pictureURL = "";
+                }
+                Log.i("JSON", pictureURL);
+
+                PostItem p = new PostItem(name, createDateTime, message, pictureURL);
                 postListItems.add(p);
             } catch (JSONException e) {
                 e.printStackTrace();

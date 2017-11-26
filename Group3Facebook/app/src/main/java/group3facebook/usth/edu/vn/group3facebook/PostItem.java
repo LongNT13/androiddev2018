@@ -6,12 +6,13 @@ package group3facebook.usth.edu.vn.group3facebook;
 
 public class PostItem {
 
-    private String creatorName, createDateTime, message, pictureURL;
+    private String creatorName, createDate, createTime, message, pictureURL;
 
     public PostItem(String creatorName, String createDateTime, String message, String pictureURL) {
         // Required empty public constructor
         this.creatorName = creatorName;
-        this.createDateTime = createDateTime;
+        this.createDate = createDateTime.substring(0, 10);
+        this.createTime = createDateTime.substring(11, 19);
         this.message = message;
         this.pictureURL = pictureURL;
     }
@@ -24,12 +25,20 @@ public class PostItem {
         this.creatorName = creatorName;
     }
 
-    public String getCreateDateTime() {
-        return createDateTime;
+    public String getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateDateTime(String createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     public String getMessage() {

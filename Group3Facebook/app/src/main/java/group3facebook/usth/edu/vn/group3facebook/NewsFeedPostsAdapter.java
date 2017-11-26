@@ -42,6 +42,13 @@ public class NewsFeedPostsAdapter extends ArrayAdapter<PostItem>{
             TextView creatorName = (TextView)v.findViewById(R.id.creatorName);
             creatorName.setText(p.getCreatorName());
 
+            //createDate
+            TextView createDate = (TextView)v.findViewById(R.id.createDate);
+            createDate.setText(p.getCreateDate());
+            //createTime
+            TextView createTime = (TextView)v.findViewById(R.id.createTime);
+            createTime.setText(p.getCreateTime());
+
             //message
             TextView message = (TextView)v.findViewById(R.id.message);
             message.setText(p.getMessage());
