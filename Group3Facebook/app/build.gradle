@@ -32,6 +32,8 @@ dependencies {
 
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     testCompile 'junit:junit:4.12'
+    compile project(path: ':volley')
+    compile project(path: ':volley')
 }
 
 configurations.all {

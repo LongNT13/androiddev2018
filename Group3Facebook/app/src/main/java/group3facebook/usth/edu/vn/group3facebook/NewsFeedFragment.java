@@ -19,9 +19,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.android.volley.Response;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.internal.ImageRequest;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
@@ -181,15 +185,29 @@ public class NewsFeedFragment extends Fragment {
                     message = "";
                 }
                 //check if there is a picture
-                String pictureURL;
-                if(currentPost.has("full_picture")){
-                    pictureURL = currentPost.getString("full_picture");
-                }else {
-                    pictureURL = "";
-                }
-                Log.i("JSON", pictureURL);
 
-                PostItem p = new PostItem(name, createDateTime, message, pictureURL);
+
+                final PostItem p = new PostItem(name, createDateTime, message, null);
+                if(currentPost.has("full_picture")){
+                    String pictureURLStr = currentPost.getString("full_picture");
+
+                    //request bitmap form url
+                    Response.Listener listener = new Response.Listener<Bitmap>(){
+                        @Override
+                        public void onResponse(Bitmap response) {
+                            p.setPicture(response);
+                        }
+                    };
+                    // a simple request to the required image
+                    com.android.volley.toolbox.ImageRequest imageRequest = new com.android.volley.toolbox.ImageRequest(
+                            pictureURLStr,
+                            listener, 0, 0, ImageView.ScaleType.CENTER,
+                            Bitmap.Config.ARGB_8888,null);
+                    // go!
+                    ((FacebookApp)getActivity().getApplication()).getQueue().add(imageRequest);
+
+                }
+
                 postListItems.add(p);
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -4,9 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="@dimen/postPad"
-    android:paddingLeft="@dimen/postPad"
-    android:paddingRight="@dimen/postPad"
     android:layout_marginTop="@dimen/postMargin"
     android:background="@color/BGLight">
 
@@ -75,14 +72,17 @@
 
         <!-- Image View -->
         <ImageView
-            android:id="@+id/picture"
-            android:layout_width="match_parent"
+            android:id="@+id/pictureOfPost"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/postPad"
             android:layout_marginBottom="@dimen/postMargin"
-            android:background="@color/BGLightDark"
             android:adjustViewBounds="true"/>
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/postPad"
+        android:background="@color/colorPrimaryDark"/>
     <!--Like/comment button-->
 
 

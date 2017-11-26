@@ -1,20 +1,23 @@
 package group3facebook.usth.edu.vn.group3facebook;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by dangvinhbao on 25/11/2017.
  */
 
 public class PostItem {
 
-    private String creatorName, createDate, createTime, message, pictureURL;
+    private String creatorName, createDate, createTime, message;
+    private Bitmap picture;
 
-    public PostItem(String creatorName, String createDateTime, String message, String pictureURL) {
+    public PostItem(String creatorName, String createDateTime, String message, Bitmap picture) {
         // Required empty public constructor
         this.creatorName = creatorName;
         this.createDate = createDateTime.substring(0, 10);
         this.createTime = createDateTime.substring(11, 19);
         this.message = message;
-        this.pictureURL = pictureURL;
+        this.picture = picture;
     }
 
     public String getCreatorName() {
@@ -49,11 +52,12 @@ public class PostItem {
         this.message = message;
     }
 
-    public String getPictureURL() {
-        return pictureURL;
+    public Bitmap getPicture() {
+        return picture;
     }
 
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
+    public void setPicture(Bitmap picture) {
+        this.picture = picture;
     }
+
 }

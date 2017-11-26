@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -52,6 +53,10 @@ public class NewsFeedPostsAdapter extends ArrayAdapter<PostItem>{
             //message
             TextView message = (TextView)v.findViewById(R.id.message);
             message.setText(p.getMessage());
+
+            //picture
+            ImageView imageView = (ImageView)v.findViewById(R.id.pictureOfPost);
+            imageView.setImageBitmap(p.getPicture());
         }
 
         return v;
