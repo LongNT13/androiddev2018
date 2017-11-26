@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -29,6 +31,7 @@ import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,7 +49,7 @@ import static android.app.Activity.RESULT_OK;
  */
 public class NewsFeedFragment extends Fragment {
 
-    Button btnPost, btnPostImg;
+    Button btnPost, btnPostImg, btnMoreFeed;
 
     ShareDialog shareDialog;
 
@@ -55,6 +58,15 @@ public class NewsFeedFragment extends Fragment {
     public static int selectImage = 1;
 
     ListView postList;
+
+    //next page of newsfeed
+    String nextPageURL = null;
+
+    //array for ListView
+    ArrayList<PostItem> postListItems = new ArrayList<PostItem>();
+    NewsFeedPostsAdapter adapter;
+
+    //functions
 
     public NewsFeedFragment() {
         // Required empty public constructor
@@ -69,6 +81,14 @@ public class NewsFeedFragment extends Fragment {
 
         shareDialog = new ShareDialog(NewsFeedFragment.this);
 
+        //adapter for Post List
+        adapter = new NewsFeedPostsAdapter(
+                getActivity(),
+                R.layout.fragment_post,
+                postListItems
+        );
+
+        postList.setAdapter(adapter);
         //request news feeds info
         GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken()
                 , new GraphRequest.GraphJSONObjectCallback() {
@@ -85,7 +105,10 @@ public class NewsFeedFragment extends Fragment {
         param.putString("limit","10");
         graphRequest.setParameters(param);
         graphRequest.executeAsync();
+
         //end of request
+
+        //test
 
         // Inflate the layout for this fragment
         return view;
@@ -95,6 +118,7 @@ public class NewsFeedFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        //choose an image
         if(requestCode == selectImage && resultCode == RESULT_OK){
             try {
                 InputStream inputStream = getActivity().getContentResolver()
@@ -114,6 +138,8 @@ public class NewsFeedFragment extends Fragment {
         //Post btn
         btnPost = (Button)v.findViewById(R.id.btnPost);
         btnPostImg = (Button)v.findViewById(R.id.btnPostImg);
+        btnMoreFeed = (Button)v.findViewById(R.id.btnMoreFeed);
+
         postList = (ListView)v.findViewById(R.id.postList);
 
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +153,13 @@ public class NewsFeedFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 postImage();
+            }
+        });
+
+        btnMoreFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getNextNewsFeedPage();
             }
         });
     }
@@ -159,16 +192,23 @@ public class NewsFeedFragment extends Fragment {
         shareDialog.show(content);
     }
 
+
     //parse received json
     private void parseJSON(JSONObject object) {
+        try {
+            //make an origin because JSON file of the next page isn't bounded by "feed" object
+            JSONObject origin;
+            if(object.has("feed")) {
+                origin = object.getJSONObject("feed");
+            }else {
+                origin = object;
+            }
 
-        ArrayList<PostItem> postListItems = new ArrayList<PostItem>();
+            JSONArray data = origin.getJSONArray("data");
+            //there are 10
+            for(int i = 0; i < data.length(); i++){
 
-        //there are 10
-        for(int i = 0; i < 10; i++){
-            try {
-                JSONObject currentPost = object.getJSONObject("feed")
-                        .getJSONArray("data")
+                JSONObject currentPost = data
                         .getJSONObject(i);
 
                 String name = currentPost
@@ -188,11 +228,12 @@ public class NewsFeedFragment extends Fragment {
 
 
                 final PostItem p = new PostItem(name, createDateTime, message, null);
+
                 if(currentPost.has("full_picture")){
                     String pictureURLStr = currentPost.getString("full_picture");
 
                     //request bitmap form url
-                    Response.Listener listener = new Response.Listener<Bitmap>(){
+                    Response.Listener listenerPic = new Response.Listener<Bitmap>(){
                         @Override
                         public void onResponse(Bitmap response) {
                             p.setPicture(response);
@@ -201,7 +242,7 @@ public class NewsFeedFragment extends Fragment {
                     // a simple request to the required image
                     com.android.volley.toolbox.ImageRequest imageRequest = new com.android.volley.toolbox.ImageRequest(
                             pictureURLStr,
-                            listener, 0, 0, ImageView.ScaleType.CENTER,
+                            listenerPic, 0, 0, ImageView.ScaleType.CENTER,
                             Bitmap.Config.ARGB_8888,null);
                     // go!
                     ((FacebookApp)getActivity().getApplication()).getQueue().add(imageRequest);
@@ -209,19 +250,48 @@ public class NewsFeedFragment extends Fragment {
                 }
 
                 postListItems.add(p);
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
+
+            //next page url
+            nextPageURL = origin.getJSONObject("paging").getString("next");
+
+        }catch (JSONException e) {
+            e.printStackTrace();
         }
+        //update listview
+        adapter.notifyDataSetChanged();
 
-        //adapter for Post List
-        NewsFeedPostsAdapter adapter = new NewsFeedPostsAdapter(
-                getActivity(),
-                R.layout.fragment_post,
-                postListItems
-        );
+    }
 
-        postList.setAdapter(adapter);
+    public void getNextNewsFeedPage(){
+        if(nextPageURL != null) {
+            //string rerquest
+            StringRequest nextPageRequest = new StringRequest(
+                    nextPageURL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            JSONObject object = null;
+                            try {
+                                object = new JSONObject(response);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            parseJSON(object);
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    }
+            );
+            ((FacebookApp) getActivity().getApplication()).getQueue().add(nextPageRequest);
+        }
     }
 
 }

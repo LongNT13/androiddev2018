@@ -40,6 +40,18 @@
                 android:layout_weight="1"
                 android:background="@color/BGLight"
                 android:text="Image"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/BGLightDark" />
+            <Button
+                android:id="@+id/btnMoreFeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/more_feeds"
+                android:textColor="@color/BGLight"/>
             <!--End Make Post box-->
 
         </LinearLayout>
@@ -48,12 +60,8 @@
         <ListView
             android:id="@+id/postList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ListView>
-        <!--End Posts List-->
-
-        <!--Comment view-->
+            android:layout_height="fill_parent"
+            android:layout_below="@id/postButtons"/>
 
     </RelativeLayout>
 
