@@ -40,10 +40,50 @@
                 android:layout_weight="1"
                 android:background="@color/BGLight"
                 android:text="Image"/>
+
+            <!--End Make Post box-->
+
+        </LinearLayout>
+
+        <!--Posts List-->
+        <ListView
+            android:id="@+id/postList"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/postButtons"/>
+
+        <LinearLayout
+            android:id="@+id/btnControlPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+            <!--Post box-->
+            <Button
+                android:id="@+id/btnPrevPage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/previous_feeds"
+                android:textColor="@color/BGLight"/>
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/BGLightDark" />
+                android:background="@color/BGLight" />
+            <Button
+                android:id="@+id/btnRefreshFeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/refresh"
+                android:textColor="@color/BGLight"/>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/BGLight" />
             <Button
                 android:id="@+id/btnMoreFeed"
                 android:layout_width="0dp"
@@ -56,12 +96,7 @@
 
         </LinearLayout>
 
-        <!--Posts List-->
-        <ListView
-            android:id="@+id/postList"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@id/postButtons"/>
+
 
     </RelativeLayout>
 

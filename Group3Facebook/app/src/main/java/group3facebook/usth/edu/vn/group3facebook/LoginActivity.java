@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         if(isLoggedIn()){
+
             loginSuccess();
 
         }else {

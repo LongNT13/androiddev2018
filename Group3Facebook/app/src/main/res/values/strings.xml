@@ -47,5 +47,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="more_feeds">More Feeds</string>
+    <string name="more_feeds">Next</string>
+    <string name="refresh">Refresh</string>
+    <string name="previous_feeds">Previous</string>
 </resources>

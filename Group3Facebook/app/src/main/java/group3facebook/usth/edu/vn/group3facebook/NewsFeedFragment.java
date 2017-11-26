@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -49,22 +50,30 @@ import static android.app.Activity.RESULT_OK;
  */
 public class NewsFeedFragment extends Fragment {
 
-    Button btnPost, btnPostImg, btnMoreFeed;
+    Button btnPost, btnPostImg, btnMoreFeed, btnPrevFeed, btnRefreshFeed;
 
     ShareDialog shareDialog;
 
     Bitmap bitmap;
 
     public static int selectImage = 1;
+    int prevBtnPress = 0;
 
+    //get newsfeed
     ListView postList;
+    GraphRequest graphRequest;
 
     //next page of newsfeed
     String nextPageURL = null;
+    String prevPageURL = null;
 
     //array for ListView
     ArrayList<PostItem> postListItems = new ArrayList<PostItem>();
     NewsFeedPostsAdapter adapter;
+
+    //Toast
+    Toast connetionError;
+    Toast outOfBound;
 
     //functions
 
@@ -90,7 +99,7 @@ public class NewsFeedFragment extends Fragment {
 
         postList.setAdapter(adapter);
         //request news feeds info
-        GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken()
+        graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken()
                 , new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -102,7 +111,6 @@ public class NewsFeedFragment extends Fragment {
         Bundle param = new Bundle();
         //request fields
         param.putString("fields","feed{from, message, created_time, full_picture}");
-        param.putString("limit","10");
         graphRequest.setParameters(param);
         graphRequest.executeAsync();
 
@@ -135,10 +143,15 @@ public class NewsFeedFragment extends Fragment {
 
 
     private void setUpVariables(View v) {
+        connetionError = Toast.makeText(getContext(), "Cannot get files!", Toast.LENGTH_SHORT);
+        outOfBound = Toast.makeText(getContext(), "No more Page", Toast.LENGTH_SHORT);
+
         //Post btn
         btnPost = (Button)v.findViewById(R.id.btnPost);
         btnPostImg = (Button)v.findViewById(R.id.btnPostImg);
         btnMoreFeed = (Button)v.findViewById(R.id.btnMoreFeed);
+        btnPrevFeed = (Button)v.findViewById(R.id.btnPrevPage);
+        btnRefreshFeed = (Button)v.findViewById(R.id.btnRefreshFeed);
 
         postList = (ListView)v.findViewById(R.id.postList);
 
@@ -159,7 +172,23 @@ public class NewsFeedFragment extends Fragment {
         btnMoreFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getNextNewsFeedPage();
+                prevBtnPress = 0;
+                getNextNewsFeedPage(0);
+            }
+        });
+
+        btnPrevFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prevBtnPress = 1;
+                getNextNewsFeedPage(1);
+            }
+        });
+
+        btnRefreshFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                graphRequest.executeAsync();
             }
         });
     }
@@ -195,9 +224,17 @@ public class NewsFeedFragment extends Fragment {
 
     //parse received json
     private void parseJSON(JSONObject object) {
+
         try {
             //make an origin because JSON file of the next page isn't bounded by "feed" object
+            if(object == null){
+                connetionError.show();
+                return;
+            }
+            postListItems.clear();
+
             JSONObject origin;
+
             if(object.has("feed")) {
                 origin = object.getJSONObject("feed");
             }else {
@@ -253,7 +290,18 @@ public class NewsFeedFragment extends Fragment {
             }
 
             //next page url
-            nextPageURL = origin.getJSONObject("paging").getString("next");
+            if(origin.has("paging")) {
+                nextPageURL = origin.getJSONObject("paging").getString("next");
+                prevPageURL = origin.getJSONObject("paging").getString("previous");
+            }else {
+                outOfBound.show();
+                //refresh
+                if(prevBtnPress == 0){
+                    getNextNewsFeedPage(1);
+                } else {
+                    getNextNewsFeedPage(0);
+                }
+            }
 
         }catch (JSONException e) {
             e.printStackTrace();
@@ -263,11 +311,17 @@ public class NewsFeedFragment extends Fragment {
 
     }
 
-    public void getNextNewsFeedPage(){
-        if(nextPageURL != null) {
+    public void getNextNewsFeedPage(int i) {
+        String link;
+        if(i == 0){
+            link = nextPageURL;
+        }else{
+            link = prevPageURL;
+        }
+        if(link != null) {
             //string rerquest
             StringRequest nextPageRequest = new StringRequest(
-                    nextPageURL,
+                    link,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -291,7 +345,8 @@ public class NewsFeedFragment extends Fragment {
                     }
             );
             ((FacebookApp) getActivity().getApplication()).getQueue().add(nextPageRequest);
+        } else {
+            connetionError.show();
         }
     }
-
 }
