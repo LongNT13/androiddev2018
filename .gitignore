@@ -8,12 +8,4 @@ Group3Facebook/build
 Group3Facebook/captures
 Group3Facebook/.externalNativeBuild
 
-Group3Facebook/volley/bin
-Group3Facebook/volley/gen
-Group3Facebook/volley/.gradle
-Group3Facebook/volley/build
-Group3Facebook/volley/.settings
-Group3Facebook/volley/target
-Group3Facebook/volley/*.iml
-Group3Facebook/volley/.idea
-Group3Facebook/volley/local.properties
+
