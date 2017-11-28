@@ -17,15 +17,33 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.FacebookActivity;
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
+import com.squareup.picasso.Picasso;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    //private Bundle bundle = new Bundle();
+    public static String profileName="";
+    public static String profileImageLink1="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        String profileFirstName = returnValueFromBundles(LoginActivity.PROFILE_FIRST_NAME);
+        String profileLastName = returnValueFromBundles(LoginActivity.PROFILE_LAST_NAME);
+        String profileImageLink = returnValueFromBundles(LoginActivity.PROFILE_IMAGE_URL);
+
+        //bundle.putString("profileFirstName", profileFirstName);
+        //bundle.putString("profileLastName", profileLastName);
+        //bundle.putString("profileImageLink", profileImageLink);
+        profileName=profileFirstName+ " " + profileLastName;
+        profileImageLink1=profileImageLink;
 
         PagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
 
@@ -39,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         //toolbar
         Toolbar tb = (Toolbar)findViewById(R.id.ToolbarMain);
         setSupportActionBar(tb);
+        //get data contains user name and avatar
+
+
     }
 
     public void ProfileMenu(View view){
@@ -97,4 +118,9 @@ public class MainActivity extends AppCompatActivity {
             return titles[position];
         }
     }
+    private String returnValueFromBundles(String key){
+        Bundle inBundle = getIntent().getExtras();
+        return inBundle.get(key).toString();
+    }
 }
+

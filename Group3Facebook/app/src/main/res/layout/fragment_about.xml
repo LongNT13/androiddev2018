@@ -12,6 +12,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/white">
+
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_marginLeft="20dp"
+                android:layout_margin="8dp"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/avatarImageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    />
+                <TextView
+                    android:id="@+id/userNameView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/avatarImageView2"
+                    android:layout_marginLeft="15dp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:text="Contact Info"
                 android:textStyle="bold"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp"
+                android:layout_marginTop="6dp"/>
             <View
                 android:layout_marginTop="5dp"
                 android:layout_width="350dp"
@@ -34,6 +73,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_margin="8dp"
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -41,183 +81,62 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mobile Phone"
-                    android:paddingLeft="5dp"/>
+                    android:text="Id"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="6dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="098 201 xx xx"
+                    android:id="@+id/userId"
                     android:gravity="right"
                     android:textStyle="bold"
-                    android:paddingRight="5dp"/>
+                    android:paddingRight="25dp"
+                    android:layout_marginTop="6dp"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="6dp"/>
+                <TextView
+                    android:id="@+id/userGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:paddingRight="25dp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="6dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/userMail"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:paddingRight="25dp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/white">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Friends"
-                android:textStyle="bold"
-                android:paddingLeft="5dp"/>
-            <View
-                android:layout_marginTop="5dp"
-                android:layout_width="350dp"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginLeft="20dp"
-                android:layout_margin="8dp"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/gladiator_friend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/icons8_knight_helmet_filled"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gladiator"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/gladiator_friend"
-                    android:textStyle="bold"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unfriend"
-                    android:textStyle="bold"
-                    android:minHeight="15dp"
-                    android:minWidth="15dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="10dp"
-                    android:background="@color/white"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="10dp"/>
-            </RelativeLayout>
 
-            <View
-                android:layout_marginTop="5dp"
-                android:layout_width="350dp"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginLeft="20dp"
-                android:layout_margin="8dp"
-                />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/gladiator_friend2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/icons8_knight_helmet_filled"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gladiator"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/gladiator_friend2"
-                    android:textStyle="bold"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unfriend"
-                    android:textStyle="bold"
-                    android:minHeight="15dp"
-                    android:minWidth="15dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="10dp"
-                    android:background="@color/white"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="10dp"/>
-            </RelativeLayout>
-            <View
-                android:layout_marginTop="5dp"
-                android:layout_width="350dp"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginLeft="20dp"
-                android:layout_margin="8dp"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/gladiator_friend3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/icons8_knight_helmet_filled"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gladiator"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/gladiator_friend3"
-                    android:textStyle="bold"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unfriend"
-                    android:textStyle="bold"
-                    android:minHeight="15dp"
-                    android:minWidth="15dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="10dp"
-                    android:background="@color/white"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="10dp"/>
-            </RelativeLayout>
-            <View
-                android:layout_marginTop="5dp"
-                android:layout_width="350dp"
-                android:layout_height="1dp"
-                android:background="@color/colorPrimaryDark"
-                android:layout_marginLeft="20dp"
-                android:layout_margin="8dp"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/gladiator_friend4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/icons8_knight_helmet_filled"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gladiator"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/gladiator_friend4"
-                    android:textStyle="bold"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unfriend"
-                    android:textStyle="bold"
-                    android:minHeight="15dp"
-                    android:minWidth="15dp"
-                    android:layout_alignParentRight="true"
-                    android:textSize="10dp"
-                    android:background="@color/white"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="10dp"/>
-            </RelativeLayout>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

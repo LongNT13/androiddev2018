@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
             }
         });
+
     }
 
     public void ProfileToMain(View view){
