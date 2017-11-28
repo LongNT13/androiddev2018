@@ -28,13 +28,6 @@ public class ProfileActivity extends AppCompatActivity {
         TabLayout mainTab = (TabLayout) findViewById(R.id.tab);
         mainTab.setupWithViewPager(pager);
 
-        Button logoutButton = (Button) findViewById(R.id.buttonLogout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
-            }
-        });
 
     }
 
