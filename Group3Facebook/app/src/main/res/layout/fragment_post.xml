@@ -4,32 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/postPad"
     android:layout_marginTop="@dimen/postMargin"
-
-    android:background="@color/white"
-    tools:context="group3facebook.usth.edu.vn.group3facebook.PostFragment">
+    android:background="@color/BGLight">
 
     <!-- TODO: Update blank fragment layout -->
     <!--Creator info-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/postPad"
+        android:background="@color/colorPrimaryDark"/>
     <LinearLayout
         android:id="@+id/creatorInfo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/creatorInfoHeight"
         android:orientation="horizontal"
-        android:padding="@dimen/creatorInfoPad"
-        android:layout_alignParentTop="true">
-        <ImageView
-            android:layout_width="@dimen/creatorIconSize"
-            android:layout_height="@dimen/creatorIconSize"
-            android:src="@drawable/user_icon"/>
+        android:padding="@dimen/creatorInfoPad">
         <TextView
+            android:id="@+id/creatorName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/creatorNamePadL"
-            android:text="@string/creatorNameSam"/>
+            android:textColor="@color/textBold"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -39,15 +36,15 @@
             android:paddingLeft="@dimen/creatorNamePadL"
             >
             <TextView
+                android:id="@+id/createDate"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/sampleDate"/>
+                android:layout_weight="1"/>
             <TextView
+                android:id="@+id/createTime"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/sampleTime"/>
+                android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
     <View
@@ -67,25 +64,32 @@
         android:orientation="vertical"
         >
         <TextView
-            android:id="@+id/TextField"
+            android:id="@+id/message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:text="@string/postTextSample"/>
+            android:padding="@dimen/postPad"/>
         <!-- End Text View-->
 
         <!-- Image View -->
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/imageMaxH"
-            android:src="@drawable/sample_image"
-            android:layout_below="@+id/TextField"
-            android:background="@color/newsFeedBG"/>
+            android:id="@+id/pictureOfPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/postPad"
+            android:layout_marginBottom="@dimen/postMargin"
+            android:adjustViewBounds="true"/>
     </LinearLayout>
-
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/postPad"
+        android:background="@color/colorPrimaryDark"/>
     <!--Like/comment button-->
-    <LinearLayout
+
+
+</LinearLayout>
+
+<!--
+<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -95,15 +99,20 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/buttonHeight"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="Like"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Like"
+            android:textColor="@color/textDark"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/buttonHeight"
+            android:background="@color/BGLightDark"/>
         <Button
             android:id="@+id/btnComment"
             android:layout_width="0dp"
             android:layout_height="@dimen/buttonHeight"
             android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="Comment"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Comment"
+            android:textColor="@color/textDark"/>
     </LinearLayout>
-
-</LinearLayout>
+-->
